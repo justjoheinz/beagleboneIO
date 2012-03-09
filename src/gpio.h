@@ -1,3 +1,5 @@
+#ifndef _GPIO_H
+#define _GPIO_H
 
 #define HIGH 1
 #define LOW 0
@@ -8,3 +10,6 @@
 #define EDGE_RISNIG  "rising"
 #define EDGE_FALLING "falling"
 #define EDGE_BOTH    "both"
+
+
+#endif

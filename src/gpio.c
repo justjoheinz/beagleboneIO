@@ -53,6 +53,18 @@ void gpio_set_value(unsigned gpio, unsigned value) {
   assert(0);
 }
 
+void gpio_get_value(unsigned gpio, unsigned *value) {
+  FILE *pin;
+  char buf[128];
+  sprintf(buf, "/sys/class/gpio/gpio%u/value", gpio);
+  if ((pin = fopen(buf,"r")) != NULL) {
+    fscanf(pin, "%u", value);
+    fclose(pin);
+    return;
+  }
+  assert(0);
+}
+
 void gpio_set_edge(unsigned gpio, char* edge) {
   FILE *pin;
   char buf[128];
@@ -77,6 +89,7 @@ void gpio_set_active_low(unsigned gpio, unsigned value) {
   }
   assert(0);
 }
+
 
 
 
