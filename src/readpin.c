@@ -7,7 +7,7 @@ int main() {
   gpio_export(pin);
   gpio_set_direction(pin, INPUT);
   for (;;) {
-    value = gpio_read_value(pin);
+    gpio_read_value(pin, &value);
     if (value == HIGH) {
       printf("Pin %u is high\n", pin);
     }
