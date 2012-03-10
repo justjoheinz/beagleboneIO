@@ -11,5 +11,13 @@
 #define EDGE_FALLING "falling"
 #define EDGE_BOTH    "both"
 
+#define GPIO(X,Y) (X*32 + Y)
+
+typedef struct {
+  char* name;
+  unsigned gpio;
+  char* mux;
+  unsigned eeprom;
+} PIN;
 
 #endif

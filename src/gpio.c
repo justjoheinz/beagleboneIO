@@ -1,5 +1,9 @@
-#include<assert.h>
-#include<stdio.h>
+#include <assert.h>
+#include <stdio.h>
+#include <sys/types.h>
+#include <sys/stat.h>
+#include <fcntl.h>
+
 #include "gpio.h"
 
 void gpio_export(unsigned gpio) {
@@ -91,5 +95,16 @@ void gpio_set_active_low(unsigned gpio, unsigned value) {
 }
 
 
+int gpio_get_filedescriptor(unsigned gpio) {
+  int fd;
+  char buf[128];
 
+  sprintf(buf, "/sys/class/gpio/gpio%u/value", gpio);
+  fd = open(buf, O_RDONLY | O_NONBLOCK );
+  assert(fd != -1);
+  return fd;
+}
 
+void gpio_close_filedescriptor(int fd) {
+  close(fd);
+}
