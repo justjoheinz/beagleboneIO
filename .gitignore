@@ -1,2 +1,7 @@
 *~
 src/test
+
+# MAC STUFF
+.DS_Store
+./src/DS_Store
+src/autom4te.cache/
