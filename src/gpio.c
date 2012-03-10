@@ -48,7 +48,7 @@ void gpio_set_direction(unsigned gpio, unsigned direction) {
   assert(0);
 }
 
-void gpio_set_value(unsigned gpio, unsigned value) {
+void gpio_write_value(unsigned gpio, unsigned value) {
   FILE *pin;
   char buf[128];
   sprintf(buf, "/sys/class/gpio/gpio%u/value", gpio);
@@ -61,7 +61,7 @@ void gpio_set_value(unsigned gpio, unsigned value) {
   assert(0);
 }
 
-void gpio_get_value(unsigned gpio, unsigned *value) {
+void gpio_read_value(unsigned gpio, unsigned *value) {
   FILE *pin;
   char buf[128];
   sprintf(buf, "/sys/class/gpio/gpio%u/value", gpio);

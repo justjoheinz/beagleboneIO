@@ -6,9 +6,9 @@ int main() {
   gpio_export(pin);
   gpio_set_direction(pin, OUTPUT);
   for (;;) {
-    gpio_set_value(pin, HIGH);
+    gpio_write_value(pin, HIGH);
     sleep(1);
-    gpio_set_value(pin, LOW);
+    gpio_write_value(pin, LOW);
     sleep(1);
   }
 }

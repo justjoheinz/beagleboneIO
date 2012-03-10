@@ -1,7 +1,14 @@
 *~
-src/test
+testgpio
+testreadpin
+*.o
+*.log
+*.status
+.debs
+Makefile
 
 # MAC STUFF
 .DS_Store
 ./src/DS_Store
+
 src/autom4te.cache/

@@ -32,11 +32,11 @@ POST_INSTALL = :
 NORMAL_UNINSTALL = :
 PRE_UNINSTALL = :
 POST_UNINSTALL = :
-bin_PROGRAMS = testgpio$(EXEEXT)
+bin_PROGRAMS = testgpio$(EXEEXT) testreadpin$(EXEEXT)
 subdir = .
 DIST_COMMON = $(am__configure_deps) $(srcdir)/Makefile.am \
-	$(srcdir)/Makefile.in $(top_srcdir)/configure depcomp \
-	install-sh missing
+	$(srcdir)/Makefile.in $(top_srcdir)/configure ChangeLog \
+	depcomp install-sh missing
 ACLOCAL_M4 = $(top_srcdir)/aclocal.m4
 am__aclocal_m4_deps = $(top_srcdir)/configure.in
 am__configure_deps = $(am__aclocal_m4_deps) $(CONFIGURE_DEPENDENCIES) \
@@ -51,6 +51,9 @@ PROGRAMS = $(bin_PROGRAMS)
 am_testgpio_OBJECTS = test.$(OBJEXT) gpio.$(OBJEXT)
 testgpio_OBJECTS = $(am_testgpio_OBJECTS)
 testgpio_LDADD = $(LDADD)
+am_testreadpin_OBJECTS = readpin.$(OBJEXT) gpio.$(OBJEXT)
+testreadpin_OBJECTS = $(am_testreadpin_OBJECTS)
+testreadpin_LDADD = $(LDADD)
 DEFAULT_INCLUDES = -I.@am__isrc@
 depcomp = $(SHELL) $(top_srcdir)/depcomp
 am__depfiles_maybe = depfiles
@@ -59,8 +62,8 @@ COMPILE = $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) \
 	$(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS)
 CCLD = $(CC)
 LINK = $(CCLD) $(AM_CFLAGS) $(CFLAGS) $(AM_LDFLAGS) $(LDFLAGS) -o $@
-SOURCES = $(testgpio_SOURCES)
-DIST_SOURCES = $(testgpio_SOURCES)
+SOURCES = $(testgpio_SOURCES) $(testreadpin_SOURCES)
+DIST_SOURCES = $(testgpio_SOURCES) $(testreadpin_SOURCES)
 ETAGS = etags
 CTAGS = ctags
 DISTFILES = $(DIST_COMMON) $(DIST_SOURCES) $(TEXINFOS) $(EXTRA_DIST)
@@ -162,6 +165,7 @@ top_build_prefix = @top_build_prefix@
 top_builddir = @top_builddir@
 top_srcdir = @top_srcdir@
 testgpio_SOURCES = test.c gpio.c
+testreadpin_SOURCES = readpin.c gpio.c
 all: all-am
 
 .SUFFIXES:
@@ -240,6 +244,9 @@ clean-binPROGRAMS:
 testgpio$(EXEEXT): $(testgpio_OBJECTS) $(testgpio_DEPENDENCIES) $(EXTRA_testgpio_DEPENDENCIES) 
 	@rm -f testgpio$(EXEEXT)
 	$(LINK) $(testgpio_OBJECTS) $(testgpio_LDADD) $(LIBS)
+testreadpin$(EXEEXT): $(testreadpin_OBJECTS) $(testreadpin_DEPENDENCIES) $(EXTRA_testreadpin_DEPENDENCIES) 
+	@rm -f testreadpin$(EXEEXT)
+	$(LINK) $(testreadpin_OBJECTS) $(testreadpin_LDADD) $(LIBS)
 
 mostlyclean-compile:
 	-rm -f *.$(OBJEXT)
@@ -248,6 +255,7 @@ distclean-compile:
 	-rm -f *.tab.c
 
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/gpio.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/readpin.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/test.Po@am__quote@
 
 .c.o:
