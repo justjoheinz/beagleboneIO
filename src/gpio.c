@@ -13,6 +13,7 @@ void gpio_export(unsigned gpio) {
     fclose(pin);
     return;
   }
+  perror("failed to export pin");
   assert(0);
 }
 
@@ -23,6 +24,7 @@ void gpio_unexport(unsigned gpio) {
     fclose(pin);
     return;
   }
+  perror("failed to unexport pin");
   assert(0);
 }
 
@@ -42,6 +44,7 @@ void gpio_set_direction(unsigned gpio, unsigned direction) {
     fclose(pin);
     return;
   }
+  perror("Failed to set direction for pin");
   assert(0);
 }
 
@@ -54,6 +57,7 @@ void gpio_set_value(unsigned gpio, unsigned value) {
     fclose(pin);
     return;
   }
+  perror("failed to set value for pin");
   assert(0);
 }
 
@@ -66,6 +70,7 @@ void gpio_get_value(unsigned gpio, unsigned *value) {
     fclose(pin);
     return;
   }
+  perror("Failed to get value for pin");
   assert(0);
 }
 
@@ -78,6 +83,7 @@ void gpio_set_edge(unsigned gpio, char* edge) {
     fclose(pin);
     return;
   }
+  perror("failed to set edge");
   assert(0);
 }
 
@@ -91,6 +97,7 @@ void gpio_set_active_low(unsigned gpio, unsigned value) {
     fclose(pin);
     return;
   }
+  perror("failed to set active low for pin");
   assert(0);
 }
 
