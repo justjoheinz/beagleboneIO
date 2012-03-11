@@ -21,12 +21,12 @@ int has_key(const Pair* pairs, int size, const char *key) {
   return 0;
 }
 
-Pair *get_pair_with_key(const Pair* pairs, int size, const char *key) {
+const Pair *get_pair_with_key(const Pair* pairs, int size, const char *key) {
   int i = 0;
   for (i = 0; i < size; i++) {
     printf("%d\n", i);
     printPair(&pairs[i]);
-    if ((strcmp(pairs[i].key, key)) == 0) return &pairs[i];
+    if ((strcmp(pairs[i].key, key)) == 0) return &(pairs[i]);
   }
   return NULL;
 }

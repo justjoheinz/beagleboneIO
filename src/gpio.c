@@ -103,7 +103,7 @@ void gpio_inspect(const PIN *pin) {
 void gpio_mux(const PIN *pin, const char *value) {
   FILE *f;
   char buffer[128];
-  Pair *omap_pair;
+  const Pair *omap_pair;
 
   if ((omap_pair = get_pair_with_key(pin->def, pin->no, "mux")) == NULL) {
     assert(0);
