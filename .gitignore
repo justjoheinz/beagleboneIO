@@ -6,7 +6,9 @@ testreadpin
 *.status
 .debs
 Makefile
-
+*.la
+*.lo
+.libs
 # MAC STUFF
 .DS_Store
 ./src/DS_Store
