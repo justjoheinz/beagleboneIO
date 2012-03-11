@@ -3,13 +3,15 @@
 #include "pins.h"
 
 int main() {
-  unsigned pin = GPIO(1,7);
+  unsigned pin = GPIO(1,2);
   unsigned value = LOW;
   int i;
- 
-  gpio_inspect(&pins[P8_3]);
-  gpio_mux(&pins[P8_3], "mux");
+  PIN configPin;
 
+  configPin = pins[P8_5];
+ 
+  gpio_inspect(&configPin);
+  gpio_mux(&configPin, "27");
   gpio_export(pin);
   gpio_set_direction(pin, INPUT);
   for (;; i++) {
