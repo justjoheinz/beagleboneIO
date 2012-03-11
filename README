@@ -1,3 +1,13 @@
-Beaglebone I/O
+= Beaglebone I/O =
 
-	   A small library to support working with input and outpins on the beaglebone (http://www.beagleboard.org/bone)
+A small library to support working with input and outpins on the beaglebone (http://www.beagleboard.org/bone).
+It comes together slowly and is largely not tested yet.
+It is an experimatel project for
+   * understanding the beaglebone hardware
+   * setting up C projects with autoconf
+   * writing the build system
+
+In the end it shall be fairly highlevel and mimic the behaviour of the Arduino Language and bonescript, the node.js implementation of the beaglebone.
+
+The API is far from stable!
+
