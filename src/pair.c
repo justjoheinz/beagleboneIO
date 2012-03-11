@@ -1,6 +1,6 @@
 #include "pair.h"
 
-void printPair(Pair *p) {
+void printPair(const Pair *p) {
     printf("key: %s, value: %s\n", p->key, p->value);
  }
 
@@ -12,7 +12,7 @@ char* pair_get_value(Pair p) {
   return p.value;
 }
 
-int has_key(Pair* pairs, int size, char *key) {
+int has_key(const Pair* pairs, int size, const char *key) {
   int i = 0;
   
   for (i = 0; i< size; i++) {
@@ -21,7 +21,7 @@ int has_key(Pair* pairs, int size, char *key) {
   return 0;
 }
 
-Pair *get_pair_with_key(Pair* pairs, int size, char *key) {
+Pair *get_pair_with_key(const Pair* pairs, int size, const char *key) {
   int i = 0;
   for (i = 0; i < size; i++) {
     printf("%d\n", i);

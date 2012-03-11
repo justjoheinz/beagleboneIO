@@ -90,7 +90,7 @@ PIN pins[] = {
   {"AIN1", 1, {{"eeprom", "68"}}}
 };
 
-void gpio_inspect(PIN *pin) {
+void gpio_inspect(const PIN *pin) {
   int i = 0;
 
   printf("Name: %s\n", pin->name);
@@ -100,7 +100,7 @@ void gpio_inspect(PIN *pin) {
   }
 }
 
-void gpio_mux(PIN *pin, char *value) {
+void gpio_mux(const PIN *pin, const char *value) {
   FILE *f;
   char buffer[128];
   Pair *omap_pair;
@@ -188,7 +188,7 @@ void gpio_read_value(unsigned gpio, unsigned *value) {
   assert(0);
 }
 
-void gpio_set_edge(unsigned gpio, char* edge) {
+void gpio_set_edge(unsigned gpio, const char* edge) {
   FILE *pin;
   char buf[128];
   sprintf(buf, "/sys/class/gpio/gpio%u/edge", gpio);

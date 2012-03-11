@@ -9,6 +9,6 @@ typedef struct {
   char* value;
 } Pair;
 
-extern void printPair(Pair *);
-extern Pair *get_pair_with_key(Pair*, int, char*);
+extern void printPair(const Pair *);
+extern Pair *get_pair_with_key(const Pair*, int, const char*);
 #endif
