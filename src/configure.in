@@ -6,7 +6,7 @@ AC_INIT([testgpio], [0.1], [justjoheinz@gmail.com])
 
 AM_INIT_AUTOMAKE([1.9 foreign])
 
-CFLAGS="-Wall -Wextra -pedantic"
+CFLAGS="$CFLAGS -Wall"
 
 AC_PROG_CC
 

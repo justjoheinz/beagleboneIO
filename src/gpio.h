@@ -8,6 +8,8 @@
 #include <sys/stat.h>
 #include <fcntl.h>
 
+#include "pair.h"
+#include "pins.h"
 
 #define HIGH 1
 #define LOW 0
@@ -23,10 +25,12 @@
 
 typedef struct {
   char* name;
-  unsigned gpio;
-  char* mux;
-  unsigned eeprom;
+  int no;
+  Pair def[10];
 } PIN;
+
+
+extern PIN pins[];
 
 extern void gpio_export(unsigned);
 
