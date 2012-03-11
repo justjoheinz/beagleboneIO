@@ -99,6 +99,14 @@ void gpio_inspect(PIN *pin) {
   }
 }
 
+void gpio_mux(PIN *pin, char *value) {
+  FILE *f;
+  char buffer[128];
+
+  //  sprintf(buffer, "/sys/kernel/debug/omap_mux/%s",
+  
+}
+
 void gpio_export(unsigned gpio) {
   FILE *pin;
 
