@@ -79,7 +79,7 @@ am__uninstall_files_from_dir = { \
 am__installdirs = "$(DESTDIR)$(libdir)" "$(DESTDIR)$(bindir)"
 LTLIBRARIES = $(lib_LTLIBRARIES)
 libbeaglebonegpio_la_LIBADD =
-am_libbeaglebonegpio_la_OBJECTS = gpio.lo pair.lo
+am_libbeaglebonegpio_la_OBJECTS = beaglebone.lo gpio.lo pair.lo
 libbeaglebonegpio_la_OBJECTS = $(am_libbeaglebonegpio_la_OBJECTS)
 PROGRAMS = $(bin_PROGRAMS)
 am_testgpio_OBJECTS = test.$(OBJEXT)
@@ -240,7 +240,7 @@ testgpio_LDADD = libbeaglebonegpio.la
 testreadpin_SOURCES = readpin.c
 testreadpin_LDADD = libbeaglebonegpio.la
 lib_LTLIBRARIES = libbeaglebonegpio.la
-libbeaglebonegpio_la_SOURCES = gpio.c pair.c
+libbeaglebonegpio_la_SOURCES = beaglebone.c gpio.c pair.c
 all: all-am
 
 .SUFFIXES:
@@ -368,6 +368,7 @@ mostlyclean-compile:
 distclean-compile:
 	-rm -f *.tab.c
 
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/beaglebone.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/gpio.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/pair.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/readpin.Po@am__quote@
