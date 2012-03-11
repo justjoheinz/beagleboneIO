@@ -46,8 +46,12 @@ extern void gpio_set_edge(unsigned, char *);
 
 extern void gpio_set_active_low(unsigned, unsigned);
 
-int gpio_get_filedescriptor(unsigned);
+extern int gpio_get_filedescriptor(unsigned);
 
-void gpio_close_filedescriptor(int);
+extern void gpio_close_filedescriptor(int);
+
+extern void gpio_inspect(PIN *);
+
+extern void gpio_mux(PIN *, char *);
 
 #endif

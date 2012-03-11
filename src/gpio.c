@@ -94,6 +94,7 @@ void gpio_inspect(PIN *pin) {
   int i = 0;
 
   printf("Name: %s\n", pin->name);
+  printf("\tno; %d\n", pin->no);
   for (i = 0; i < pin->no; i++) {
     printf("\t%s : %s\n",(pin->def[i]).key, (pin->def[i]).value);
   }
@@ -102,9 +103,18 @@ void gpio_inspect(PIN *pin) {
 void gpio_mux(PIN *pin, char *value) {
   FILE *f;
   char buffer[128];
+  Pair *omap_pair;
 
-  //  sprintf(buffer, "/sys/kernel/debug/omap_mux/%s",
-  
+  if ((omap_pair = get_pair_with_key(pin->def, pin->no, "mux")) == NULL) {
+    assert(0);
+  }
+  sprintf(buffer, "/sys/kernel/debug/omap_mux/%s", omap_pair->value);
+  if ((f = fopen(buffer, "w")) == NULL) {
+    perror("can't open pin for muxing");
+    assert(0);
+  }
+  fprintf(f, "%s", value);
+  fclose(f);
 }
 
 void gpio_export(unsigned gpio) {
