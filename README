@@ -1,4 +1,4 @@
-= Beaglebone I/O =
+== Beaglebone I/O ==
 
 A small library to support working with input and outpins on the beaglebone (http://www.beagleboard.org/bone).
 It comes together slowly and is largely not tested yet.
@@ -10,4 +10,19 @@ It is an experimatel project for
 In the end it shall be fairly highlevel and mimic the behaviour of the Arduino Language and bonescript, the node.js implementation of the beaglebone.
 
 The API is far from stable!
+
+== TODO ==
+
+Stuff to do urgently:
+      * add analogWrite, analogRead
+      * add PWM support
+      * try it out
+      * reorganize the project structure
+      * I2C support
+      * testing and bug reporting
+      * functions inspired by http://arduino.cc/en/Reference/HomePage
+      * a delay function other than sleep
+      * support for Serial communication using /dev/ttyOx / /dev/cuXXX?
+      * provide insight
+      
 
