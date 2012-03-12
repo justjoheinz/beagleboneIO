@@ -13,7 +13,7 @@ Makefile
 .DS_Store
 ./src/DS_Store
 .project
-src/autom4te.cache/
+autom4te.cache/
 libtool
 m4/
 .cproject
