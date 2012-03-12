@@ -1,0 +1,20 @@
+# Process this file with autoconf to produce a configure script.
+
+AC_PREREQ(2.59)
+
+AC_INIT([beagleboneio], [0.1], [justjoheinz@gmail.com])
+
+AM_INIT_AUTOMAKE([1.9 -Wall -Werror])
+
+CFLAGS="$CFLAGS -Wall"
+
+AC_PROG_CC
+# AC_CONFIG_HEADER([config.h])
+AC_CONFIG_FILES([
+  Makefile
+  src/makefile])
+
+AC_CONFIG_MACRO_DIR([m4])
+LT_INIT()
+
+AC_OUTPUT
