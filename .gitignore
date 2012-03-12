@@ -12,5 +12,8 @@ Makefile
 # MAC STUFF
 .DS_Store
 ./src/DS_Store
-
+.project
 src/autom4te.cache/
+libtool
+m4/
+.cproject
