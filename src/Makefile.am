@@ -7,4 +7,5 @@ testreadpin_SOURCES = readpin.c
 testreadpin_LDADD = libbeaglebonegpio.la
 
 lib_LTLIBRARIES = libbeaglebonegpio.la
-libbeaglebonegpio_la_SOURCES = beaglebone.c gpio.c pair.c
+libbeaglebonegpio_la_SOURCES = beaglebone.c gpio.c pair.c gpio.h pair.h
+include_HEADERS = beaglebone.h
