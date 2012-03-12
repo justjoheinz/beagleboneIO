@@ -36,7 +36,8 @@ PRE_UNINSTALL = :
 POST_UNINSTALL = :
 build_triplet = @build@
 host_triplet = @host@
-bin_PROGRAMS = testgpio$(EXEEXT) testreadpin$(EXEEXT)
+bin_PROGRAMS = testgpio$(EXEEXT) testreadpin$(EXEEXT) \
+	pwm_clock$(EXEEXT)
 subdir = .
 DIST_COMMON = $(am__configure_deps) $(include_HEADERS) \
 	$(srcdir)/Makefile.am $(srcdir)/Makefile.in \
@@ -85,6 +86,9 @@ libbeaglebonegpio_la_LIBADD =
 am_libbeaglebonegpio_la_OBJECTS = beaglebone.lo gpio.lo pair.lo
 libbeaglebonegpio_la_OBJECTS = $(am_libbeaglebonegpio_la_OBJECTS)
 PROGRAMS = $(bin_PROGRAMS)
+am_pwm_clock_OBJECTS = pwm_clock.$(OBJEXT)
+pwm_clock_OBJECTS = $(am_pwm_clock_OBJECTS)
+pwm_clock_LDADD = $(LDADD)
 am_testgpio_OBJECTS = test.$(OBJEXT)
 testgpio_OBJECTS = $(am_testgpio_OBJECTS)
 testgpio_DEPENDENCIES = libbeaglebonegpio.la
@@ -104,10 +108,10 @@ CCLD = $(CC)
 LINK = $(LIBTOOL) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) \
 	--mode=link $(CCLD) $(AM_CFLAGS) $(CFLAGS) $(AM_LDFLAGS) \
 	$(LDFLAGS) -o $@
-SOURCES = $(libbeaglebonegpio_la_SOURCES) $(testgpio_SOURCES) \
-	$(testreadpin_SOURCES)
-DIST_SOURCES = $(libbeaglebonegpio_la_SOURCES) $(testgpio_SOURCES) \
-	$(testreadpin_SOURCES)
+SOURCES = $(libbeaglebonegpio_la_SOURCES) $(pwm_clock_SOURCES) \
+	$(testgpio_SOURCES) $(testreadpin_SOURCES)
+DIST_SOURCES = $(libbeaglebonegpio_la_SOURCES) $(pwm_clock_SOURCES) \
+	$(testgpio_SOURCES) $(testreadpin_SOURCES)
 HEADERS = $(include_HEADERS)
 ETAGS = etags
 CTAGS = ctags
@@ -243,6 +247,7 @@ testgpio_SOURCES = test.c
 testgpio_LDADD = libbeaglebonegpio.la
 testreadpin_SOURCES = readpin.c
 testreadpin_LDADD = libbeaglebonegpio.la
+pwm_clock_SOURCES = pwm_clock.c
 lib_LTLIBRARIES = libbeaglebonegpio.la
 libbeaglebonegpio_la_SOURCES = beaglebone.c gpio.c pair.c gpio.h pair.h
 include_HEADERS = beaglebone.h
@@ -360,6 +365,9 @@ clean-binPROGRAMS:
 	list=`for p in $$list; do echo "$$p"; done | sed 's/$(EXEEXT)$$//'`; \
 	echo " rm -f" $$list; \
 	rm -f $$list
+pwm_clock$(EXEEXT): $(pwm_clock_OBJECTS) $(pwm_clock_DEPENDENCIES) $(EXTRA_pwm_clock_DEPENDENCIES) 
+	@rm -f pwm_clock$(EXEEXT)
+	$(LINK) $(pwm_clock_OBJECTS) $(pwm_clock_LDADD) $(LIBS)
 testgpio$(EXEEXT): $(testgpio_OBJECTS) $(testgpio_DEPENDENCIES) $(EXTRA_testgpio_DEPENDENCIES) 
 	@rm -f testgpio$(EXEEXT)
 	$(LINK) $(testgpio_OBJECTS) $(testgpio_LDADD) $(LIBS)
@@ -376,6 +384,7 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/beaglebone.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/gpio.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/pair.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/pwm_clock.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/readpin.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/test.Po@am__quote@
 
