@@ -11,7 +11,7 @@ int main() {
   configPin = pins[P8_5];
  
   gpio_inspect(&configPin);
-  gpio_mux(&configPin, "27");
+  gpio_mux(&configPin, 0x27);
   gpio_export(pin);
   gpio_set_direction(pin, INPUT);
   for (;; i++) {
