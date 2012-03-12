@@ -100,7 +100,7 @@ void gpio_inspect(const PIN *pin) {
   }
 }
 
-void gpio_mux(const PIN *pin, const char *value) {
+void gpio_mux(const PIN *pin, unsigned value) {
   FILE *f;
   char buffer[128];
   const Pair *omap_pair;
@@ -113,7 +113,7 @@ void gpio_mux(const PIN *pin, const char *value) {
     perror("can't open pin for muxing");
     assert(0);
   }
-  fprintf(f, "%s", value);
+  fprintf(f, "%x", value);
   fclose(f);
 }
 

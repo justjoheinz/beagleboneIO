@@ -8,10 +8,10 @@ void pinMode(const PIN pin, unsigned int value) {
   gpio = atoi(pair->value);
   gpio_export(gpio);
   if (value == INPUT) {
-    gpio_mux(&pin, "27");
+    gpio_mux(&pin, 0x27);
   }
   else {
-    gpio_mux(&pin, "7");
+    gpio_mux(&pin, 0x7);
   }
   gpio_set_direction(gpio, value);
 

@@ -23,6 +23,20 @@
 
 #define GPIO(X,Y) (X*32 + Y)
 
+#define _MUX(X) (1<<X)
+#define _MUX_0 _MUX(0)
+#define _MUX_1 _MUX(1)
+#define _MUX_2 _MUX(2)
+#define _MUX_3 _MUX(3)
+#define _MUX_4 _MUX(4)
+#define _MUX_6 _MUX(5)
+
+#define _MUX_PUPD_DISABLE _MUX_3
+#define _MUX_PUPD_PULLUP _MUX_4
+#define _MUX_RECEIVER_ENABLE _MUX_5
+#define _MUX_SLEW_SLOW _MUX_6
+
+
 typedef struct {
   char* name;
   int no;
@@ -52,6 +66,6 @@ extern void gpio_close_filedescriptor(int);
 
 extern void gpio_inspect(const PIN *);
 
-extern void gpio_mux(const PIN *, const char *);
+extern void gpio_mux(const PIN *, unsigned);
 
 #endif

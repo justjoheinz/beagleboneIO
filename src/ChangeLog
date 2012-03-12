@@ -1,3 +1,9 @@
+2012-03-12  Markus Klink  <markusklink@joheinz.local>
+
+	* refactoring of gpio_mux, use unsigned instead of char*
+
+	* added register definitions to gpio.h
+
 2012-03-11  Markus Klink  <markusklink@joheinz.local>
 
 	* refactoring of header structure and function definitions
