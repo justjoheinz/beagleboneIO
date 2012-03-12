@@ -2,7 +2,7 @@
 
 AC_PREREQ(2.59)
 
-AC_INIT([testgpio], [0.1], [justjoheinz@gmail.com])
+AC_INIT([beagleboneio], [0.1], [justjoheinz@gmail.com])
 
 AM_INIT_AUTOMAKE([1.9 foreign])
 
