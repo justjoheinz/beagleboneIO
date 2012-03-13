@@ -39,3 +39,18 @@ unsigned digitalRead(const PIN pin) {
 
   return value;
 }
+
+unsigned analogRead(unsigned pin) {
+  FILE *f;
+  char buf[128];
+    unsigned value;
+    snprintf(buf, sizeof(buf), "/sys/bus/platform/devices/tsc/ain%u", (pin + 1));
+  if ((f = fopen(buf, "r")) != NULL) {
+    fscanf(f, "%u", &value);
+    fclose(f);
+    return value;
+  }
+  perror("Cannot access analog pin");
+  assert(0);
+}
+  
