@@ -1,3 +1,11 @@
+2012-03-14  Markus Klink  <markusklink@joheinz.local>
+
+	* analogRead
+
+	* refactoring of pins.h and pins.c
+
+	* started some docs
+
 2012-03-12  Markus Klink  <markusklink@joheinz.local>
 
 	* refactoring of gpio_mux, use unsigned instead of char*

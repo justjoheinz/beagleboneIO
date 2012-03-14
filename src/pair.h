@@ -1,11 +1,18 @@
+/** @file pair.h
+ */
 #ifndef _PAIR_H
 #define _PAIR_H
 
 #include <string.h>
 #include <stdio.h>
 
+/** @brief A structure for key/value pairs.
+ *
+ */
 typedef struct {
-  char* key;
+  /** the key. */
+  char* key; 
+  /** the value. */
   char* value;
 } Pair;
 

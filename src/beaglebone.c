@@ -40,7 +40,7 @@ unsigned digitalRead(const PIN pin) {
   return value;
 }
 
-unsigned analogRead(unsigned pin) {
+unsigned analogRead(const unsigned pin) {
   FILE *f;
   char buf[128];
     unsigned value;

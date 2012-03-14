@@ -10,5 +10,5 @@ testreadpin_LDADD = libbeaglebonegpio.la
 pwm_clock_SOURCES = pwm_clock.c
 
 lib_LTLIBRARIES = libbeaglebonegpio.la
-libbeaglebonegpio_la_SOURCES = beaglebone.c gpio.c pair.c gpio.h pair.h pins.h
+libbeaglebonegpio_la_SOURCES = beaglebone.c gpio.c pair.c gpio.h pair.h pins.c pins.h
 include_HEADERS = beaglebone.h

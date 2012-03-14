@@ -1,3 +1,5 @@
+/** @file gpio.h
+ */
 #ifndef _GPIO_H
 #define _GPIO_H
 
@@ -11,9 +13,24 @@
 #include "pair.h"
 #include "pins.h"
 
+/** a HIGH value for a digital pin. 
+ * @ingroup pin_values
+ */
 #define HIGH 1
+
+/** a LOW value for a digital pin. 
+ * @ingroup pin_values
+ */
 #define LOW 0
+
+/** OUTPUT mode for a pin. 
+ * @ingoup pin_values
+ */
 #define OUTPUT 1
+
+/** INPUT mode for a pin. 
+ * @ingroup pin_values
+ */
 #define INPUT 0
 
 #define EDGE_NONE    "none"
@@ -21,6 +38,9 @@
 #define EDGE_FALLING "falling"
 #define EDGE_BOTH    "both"
 
+/** calculate the correct number based on the X and Y.
+ *
+ */
 #define GPIO(X,Y) (X*32 + Y)
 
 #define _MUX(X) (1<<X)

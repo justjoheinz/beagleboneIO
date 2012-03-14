@@ -79,7 +79,8 @@ am__installdirs = "$(DESTDIR)$(libdir)" "$(DESTDIR)$(bindir)" \
 	"$(DESTDIR)$(includedir)"
 LTLIBRARIES = $(lib_LTLIBRARIES)
 libbeaglebonegpio_la_LIBADD =
-am_libbeaglebonegpio_la_OBJECTS = beaglebone.lo gpio.lo pair.lo
+am_libbeaglebonegpio_la_OBJECTS = beaglebone.lo gpio.lo pair.lo \
+	pins.lo
 libbeaglebonegpio_la_OBJECTS = $(am_libbeaglebonegpio_la_OBJECTS)
 PROGRAMS = $(bin_PROGRAMS)
 am_pwm_clock_OBJECTS = pwm_clock.$(OBJEXT)
@@ -231,7 +232,7 @@ testreadpin_SOURCES = readpin.c
 testreadpin_LDADD = libbeaglebonegpio.la
 pwm_clock_SOURCES = pwm_clock.c
 lib_LTLIBRARIES = libbeaglebonegpio.la
-libbeaglebonegpio_la_SOURCES = beaglebone.c gpio.c pair.c gpio.h pair.h pins.h
+libbeaglebonegpio_la_SOURCES = beaglebone.c gpio.c pair.c gpio.h pair.h pins.c pins.h
 include_HEADERS = beaglebone.h
 all: all-am
 
@@ -362,6 +363,7 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/beaglebone.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/gpio.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/pair.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/pins.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/pwm_clock.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/readpin.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/test.Po@am__quote@
