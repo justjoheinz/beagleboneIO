@@ -10,13 +10,15 @@ void pinMode(const PIN pin, unsigned int value) {
 
   pair  = get_pair_with_key(pin.def, pin.no, "gpio");
   gpio = atoi(pair->value);
-  gpio_export(gpio);
+
   if (value == INPUT) {
     gpio_mux(&pin, 0x27);
   }
   else {
     gpio_mux(&pin, 0x7);
   }
+
+  gpio_export(gpio);
   gpio_set_direction(gpio, value);
 
 }

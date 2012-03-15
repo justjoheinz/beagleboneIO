@@ -9,7 +9,7 @@ unsigned compute_pin_index(const char* pinStr) {
 
   if ((sscanf(pinStr, "P%u_%u", &x, &y)) == 2) {
     if ((x >= 8) && (x<=9) && (y >=1 && y<=46)) {
-      return (x-8)*45 + y;
+      return (x-8)*45 + y -1;
     }
   }
   // invalid conversion or invalid range
