@@ -31,7 +31,7 @@ void display_usage() {
 
 void doAnalogRead(unsigned pin) {
   unsigned value = analogRead(pin);
-  printf("%u", value);
+  printf("%u\n", value);
 }
 
 
