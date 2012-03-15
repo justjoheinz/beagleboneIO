@@ -3,7 +3,6 @@
 #include <stdio.h>
 
 unsigned compute_pin_index(const char* pinStr) {
-  unsigned result;
   unsigned x;
   unsigned y;
 
