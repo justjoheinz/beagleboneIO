@@ -3,8 +3,8 @@
 #ifndef _GPIO_H
 #define _GPIO_H
 
-#include "pair.h"
-#include "pins.h"
+#include "beaglepair.h"
+#include "beaglepins.h"
 
 /** a HIGH value for a digital pin. 
  * @ingroup pin_values

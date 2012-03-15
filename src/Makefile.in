@@ -79,7 +79,8 @@ am__installdirs = "$(DESTDIR)$(libdir)" "$(DESTDIR)$(bindir)" \
 	"$(DESTDIR)$(includedir)"
 LTLIBRARIES = $(lib_LTLIBRARIES)
 libbeagleboneio_la_LIBADD =
-am_libbeagleboneio_la_OBJECTS = beaglebone.lo gpio.lo pair.lo pins.lo
+am_libbeagleboneio_la_OBJECTS = beaglebone.lo gpio.lo pair.lo \
+	beaglepins.lo
 libbeagleboneio_la_OBJECTS = $(am_libbeagleboneio_la_OBJECTS)
 PROGRAMS = $(bin_PROGRAMS)
 analogRead_SOURCES = analogRead.c
@@ -225,14 +226,14 @@ target_alias = @target_alias@
 top_build_prefix = @top_build_prefix@
 top_builddir = @top_builddir@
 top_srcdir = @top_srcdir@
-digitalWrite_SOURCES = digitalWrite.c util.c
+digitalWrite_SOURCES = digitalWrite.c util.c beagleutil.h
 digitalWrite_LDADD = libbeagleboneio.la
-analogRead_Sources = analogRead.c util.c
+analogRead_Sources = analogRead.c util.c beagleutil.h
 analogRead_LDADD = libbeagleboneio.la
 pwm_clock_SOURCES = pwm_clock.c
 lib_LTLIBRARIES = libbeagleboneio.la
-libbeagleboneio_la_SOURCES = beaglebone.c gpio.c pair.c gpio.h pair.h pins.c pins.h
-include_HEADERS = beaglebone.h
+libbeagleboneio_la_SOURCES = beaglebone.c gpio.c pair.c  beaglepins.c
+include_HEADERS = beaglebone.h beaglepins.h beaglegpio.h beaglepair.h
 all: all-am
 
 .SUFFIXES:
@@ -361,10 +362,10 @@ distclean-compile:
 
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/analogRead.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/beaglebone.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/beaglepins.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/digitalWrite.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/gpio.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/pair.Plo@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/pins.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/pwm_clock.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/util.Po@am__quote@
 

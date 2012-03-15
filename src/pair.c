@@ -1,4 +1,4 @@
-#include "pair.h"
+#include "beaglepair.h"
 
 #include <string.h>
 #include <stdio.h>

@@ -4,7 +4,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#include "util.h"
+#include "beagleutil.h"
 #include "beaglebone.h"
 
 static const struct option longOpts[] = {

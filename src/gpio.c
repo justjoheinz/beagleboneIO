@@ -1,4 +1,4 @@
-#include "gpio.h"
+#include "beaglegpio.h"
 
 #include <assert.h>
 #include <stdio.h>

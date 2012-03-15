@@ -59,4 +59,10 @@ unsigned analogRead(const unsigned pin) {
   perror("Cannot access analog pin");
   assert(0);
 }
-  
+
+void run(beaglefunc setup, beaglefunc loop) {
+  (*setup)();
+  for(;;) {
+    (*loop)();
+  }
+}

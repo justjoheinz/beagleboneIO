@@ -4,7 +4,7 @@
 #ifndef _PINS_H
 #define _PINS_H
 
-#include "gpio.h"
+#include "beaglegpio.h"
 
 /** P8_1
  * DGND
