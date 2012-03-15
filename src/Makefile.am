@@ -1,14 +1,11 @@
 ## Makefile.am -- Process this file with automake to produce Makefile.in
-bin_PROGRAMS = testgpio testreadpin pwm_clock digitalWrite
-
-testgpio_SOURCES = test.c
-testgpio_LDADD = libbeagleboneio.la
-
-testreadpin_SOURCES = readpin.c
-testreadpin_LDADD = libbeagleboneio.la
+bin_PROGRAMS = pwm_clock digitalWrite analogRead
 
 digitalWrite_SOURCES = digitalWrite.c util.c
 digitalWrite_LDADD = libbeagleboneio.la
+
+analogRead_Sources = analogRead.c util.c
+analogRead_LDADD = libbeagleboneio.la
 
 pwm_clock_SOURCES = pwm_clock.c
 
