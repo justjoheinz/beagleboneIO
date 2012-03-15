@@ -1,5 +1,13 @@
 #include "gpio.h"
 
+#include <assert.h>
+#include <stdio.h>
+#include <unistd.h>
+#include <sys/types.h>
+#include <sys/stat.h>
+#include <fcntl.h>
+
+
 void gpio_inspect(const PIN *pin) {
   int i = 0;
 

@@ -3,13 +3,6 @@
 #ifndef _GPIO_H
 #define _GPIO_H
 
-#include <assert.h>
-#include <stdio.h>
-#include <unistd.h>
-#include <sys/types.h>
-#include <sys/stat.h>
-#include <fcntl.h>
-
 #include "pair.h"
 #include "pins.h"
 

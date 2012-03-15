@@ -1,5 +1,9 @@
 #include "beaglebone.h"
 
+#include <stdio.h>
+#include <stdlib.h>
+#include <assert.h>
+
 void pinMode(const PIN pin, unsigned int value) {
   unsigned gpio;
   const Pair* pair;

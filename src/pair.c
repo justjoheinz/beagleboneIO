@@ -1,5 +1,8 @@
 #include "pair.h"
 
+#include <string.h>
+#include <stdio.h>
+
 void printPair(const Pair *p) {
     printf("key: %s, value: %s\n", p->key, p->value);
  }

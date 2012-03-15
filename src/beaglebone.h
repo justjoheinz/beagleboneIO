@@ -2,8 +2,8 @@
  */
 #ifndef _BEAGLEBONE_H
 #define _BEAGLEBONE_H
+
 #include "gpio.h"
-#include <stdlib.h>
 
 /** set a GPIO pin mode.
  *
