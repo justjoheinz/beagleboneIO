@@ -3,7 +3,7 @@
 #ifndef _BEAGLEBONE_H
 #define _BEAGLEBONE_H
 
-#include "gpio.h"
+#include "beaglegpio.h"
 
 /** set a GPIO pin mode.
  *
@@ -36,4 +36,9 @@ extern unsigned digitalRead(const PIN);
  * @return the read value
  */
 extern unsigned analogRead(const unsigned pin);
+
+typedef void (*beaglefunc)(void);
+
+
+extern void run(beaglefunc setup, beaglefunc loop);
 #endif
