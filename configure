@@ -2592,7 +2592,7 @@ am__tar='$${TAR-tar} chof - "$$tardir"' am__untar='$${TAR-tar} xf -'
 
 
 
-CFLAGS="$CFLAGS -Wall"
+CFLAGS="$CFLAGS -Wall -O2"
 
 ac_ext=c
 ac_cpp='$CPP $CPPFLAGS'

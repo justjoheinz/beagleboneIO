@@ -6,7 +6,7 @@ AC_INIT([beagleboneio], [0.1], [justjoheinz@gmail.com])
 
 AM_INIT_AUTOMAKE([1.9 -Wall -Werror])
 
-CFLAGS="$CFLAGS -Wall"
+CFLAGS="$CFLAGS -Wall -O2"
 
 AC_PROG_CC
 # AC_CONFIG_HEADER([config.h])
