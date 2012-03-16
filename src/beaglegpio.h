@@ -1,4 +1,4 @@
-/** @file gpio.h
+/** @file beaglegpio.h
  */
 #ifndef _GPIO_H
 #define _GPIO_H
@@ -49,36 +49,83 @@
 #define _MUX_RECEIVER_ENABLE _MUX_5
 #define _MUX_SLEW_SLOW _MUX_6
 
-
+/** Structure to hold information about a pin.
+ * 
+ */
 typedef struct {
+  /** name of the pin. */
   char* name;
+  /** number of information pairs in the PIN struct */
   int no;
+  /** information pairs.
+   * These contain information such as the pin name for muxing.
+   */
   Pair def[10];
 } PIN;
 
 
 extern PIN pins[];
 
+/** export a pin. */
 extern void gpio_export(unsigned);
 
+/** unexport/release a pin. */
 extern void gpio_unexport(unsigned);
 
-extern void gpio_set_direction(unsigned, unsigned);
+/** set the direction of the pin.
+ * @param pin the pin
+ * @param value INPUT or OUTPUT
+ */
+extern void gpio_set_direction(unsigned pin, unsigned value);
 
-extern void gpio_write_value(unsigned, unsigned);
+/** write a value to the pin.
+ * @param pin the pin
+ * @param value HIGH or LOW
+ */
+extern void gpio_write_value(unsigned pin, unsigned value);
 
-extern void gpio_read_value(unsigned, unsigned *);
+/** read a value from a pin.
+ * @param pin the pin
+ * @param value the returned value
+ */
+extern void gpio_read_value(unsigned pin, unsigned *value);
 
+/** set the edge for the pin.
+ * @param pin the pin
+ * @param edge one of EDGE_NONE, EDGE_FALLING, EDGE_RISING, EDGE_BOTH
+ */ 
 extern void gpio_set_edge(unsigned, const char *);
 
-extern void gpio_set_active_low(unsigned, unsigned);
+/** set active low for the pin.
+ * @param pin the pin
+ * @param value one of HIGH or LOW
+ */
+extern void gpio_set_active_low(unsigned pin, unsigned value);
 
+/** get low level file descriptor.
+ * It is in the responsibility of the developer to close the FD again.
+ * @param pin the pin
+ * @return the file descriptor
+ */
 extern int gpio_get_filedescriptor(unsigned);
 
-extern void gpio_close_filedescriptor(int);
+/** close the file descriptor.
+ * @param fd the file descriptor
+ */
+extern void gpio_close_filedescriptor(int fd);
 
-extern void gpio_inspect(const PIN *);
+/** print some debug stuff about the PIN structure
+ *
+ */
+extern void gpio_inspect(const PIN *pin);
 
+/** mux a pin.
+ * You can pass any pin to this operation and the library looks up the name
+ * of the pin in the muxing information, to write the new mux value to the
+ * right name in the /sys/ filesystem.
+ * @param pin the pin to be muxed
+ * @param mux the new mux value
+ */
 extern void gpio_mux(const PIN *, unsigned);
 
 #endif

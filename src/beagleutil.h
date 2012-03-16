@@ -1,4 +1,5 @@
-/** Utility functions.
+/** @file beagleutil.h
+ * Utility functions.
  *
  */
 

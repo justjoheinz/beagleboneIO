@@ -1,4 +1,4 @@
-/** @file pair.h
+/** @file beaglepair.h
  */
 #ifndef _PAIR_H
 #define _PAIR_H
