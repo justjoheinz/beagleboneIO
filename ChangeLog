@@ -1,3 +1,9 @@
+2012-03-15  Markus Klink  <markusklink@joheinz.local>
+
+	* threw away the test classes
+
+	* added digitalWrite and analogRead utilities
+
 2012-03-14  Markus Klink  <markusklink@joheinz.local>
 
 	* analogRead

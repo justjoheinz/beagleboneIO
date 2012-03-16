@@ -4,12 +4,18 @@ AC_PREREQ(2.59)
 
 AC_INIT([beagleboneio], [0.1], [justjoheinz@gmail.com])
 
+# create seperate directory for autoconf stuff
+AC_CONFIG_AUX_DIR([config])
+
 AM_INIT_AUTOMAKE([1.9 -Wall -Werror])
 
 CFLAGS="$CFLAGS -Wall -O2"
 
 AC_PROG_CC
+AC_PROG_LIBTOOL
+
 # AC_CONFIG_HEADER([config.h])
+
 AC_CONFIG_FILES([
   Makefile
   src/Makefile])
