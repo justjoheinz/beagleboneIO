@@ -1,3 +1,7 @@
+2012-03-16  Markus Klink  <markusklink@joheinz.oosedmz.local>
+
+	* reconfigured autoconf to use dedicated config directory
+
 2012-03-15  Markus Klink  <markusklink@joheinz.local>
 
 	* threw away the test classes
