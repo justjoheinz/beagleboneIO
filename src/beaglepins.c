@@ -1,4 +1,9 @@
+/** @file beaglepins.c
+ *
+ * AUTOMATICALLY GENERATED - PLEASE DO NOT MODIFY
+ */
 #include "beaglepins.h"
+#include "beaglegpio.h"
 
 PIN pins[] = {
 /* P8_1 */
