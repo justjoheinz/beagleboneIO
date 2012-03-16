@@ -226,6 +226,9 @@ target_alias = @target_alias@
 top_build_prefix = @top_build_prefix@
 top_builddir = @top_builddir@
 top_srcdir = @top_srcdir@
+
+# add some endings to CLEANFILES
+CLEANFILES = *~
 digitalWrite_SOURCES = digitalWrite.c util.c beagleutil.h
 digitalWrite_LDADD = libbeagleboneio.la
 analogRead_Sources = analogRead.c util.c beagleutil.h
@@ -527,6 +530,7 @@ install-strip:
 mostlyclean-generic:
 
 clean-generic:
+	-test -z "$(CLEANFILES)" || rm -f $(CLEANFILES)
 
 distclean-generic:
 	-test -z "$(CONFIG_CLEAN_FILES)" || rm -f $(CONFIG_CLEAN_FILES)

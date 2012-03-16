@@ -1,4 +1,8 @@
 ## Makefile.am -- Process this file with automake to produce Makefile.in
+
+# add some endings to CLEANFILES
+CLEANFILES = *~
+
 bin_PROGRAMS = pwm_clock digitalWrite analogRead
 
 digitalWrite_SOURCES = digitalWrite.c util.c beagleutil.h
