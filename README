@@ -63,6 +63,10 @@ analogRead --pin <pin>
 BONE:~/projects/beagleboneIO# analogRead --pin 4
 4080
 
+== SAMPLE PROJECT ==
+
+A super simple use of the library:
+https://gist.github.com/2059197
 
 In order to write your own programms, currently inspect beaglebone.h and have a look at the source files for analogRead and digitalWrite. The whole API is subject to change though.
 Please CONTRIBUTE by submitting feature request and bugs and code.
