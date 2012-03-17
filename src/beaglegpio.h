@@ -104,15 +104,18 @@ extern void gpio_set_active_low(unsigned pin, unsigned value);
 
 /** get low level file descriptor.
  * It is in the responsibility of the developer to close the FD again.
+ * This operations IS NOT STABLE! Do not rely on its interface, behavior or
+ * existence.
  * @param pin the pin
+ * @param flag the flags used for the open() operation
  * @return the file descriptor
  */
-extern int gpio_get_filedescriptor(unsigned);
+extern int gpio_get_fd(unsigned pin, int flag);
 
 /** close the file descriptor.
  * @param fd the file descriptor
  */
-extern void gpio_close_filedescriptor(int fd);
+extern void gpio_close_fd(int fd);
 
 /** print some debug stuff about the PIN structure
  *

@@ -81,16 +81,15 @@ void gpio_set_direction(unsigned gpio, unsigned direction) {
 
 void gpio_write_value(unsigned gpio, unsigned value) {
   int fd;
-  char buf[128];
-  snprintf(buf, sizeof(buf), "/sys/class/gpio/gpio%u/value", gpio);
-  if ((fd = open(buf,O_WRONLY)) != -1) {
+
+  if ((fd = gpio_get_fd(gpio,O_WRONLY)) != -1) {
     if (value) {
       write(fd, "1", 2);
     }
     else {
       write(fd, "0", 2);
     }
-    close(fd);
+    gpio_close_fd(fd);
     return;
   }
   perror("failed to set value for pin");
@@ -140,17 +139,17 @@ void gpio_set_active_low(unsigned gpio, unsigned value) {
 }
 
 
-int gpio_get_filedescriptor(unsigned gpio) {
+int gpio_get_fd(unsigned gpio, int flag) {
   int fd;
   char buf[128];
 
   snprintf(buf, sizeof(buf),"/sys/class/gpio/gpio%u/value", gpio);
-  fd = open(buf, O_RDONLY | O_NONBLOCK );
+  fd = open(buf, flag );
   assert(fd != -1);
   return fd;
 }
 
-void gpio_close_filedescriptor(int fd) {
+void gpio_close_fd(int fd) {
   close(fd);
 }
 
