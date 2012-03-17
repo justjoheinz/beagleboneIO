@@ -22,7 +22,7 @@ static int helpDisplayed = 0;
 
 void display_usage() {
   printf("analogRead --pin <pin>\n");
-  printf("\t<pin>\t an analog pin number, Arduino style, e.g. 0, 1, ...\n");
+  printf("\t<pin>\tan analog pin number, Arduino style, e.g. 0, 1, ...\n");
   printf("\t\tmaps to the according AIN pin of the beaglebone.\n");
   printf("\t\tthe value is written to stdoutn");
   printf("\n");
