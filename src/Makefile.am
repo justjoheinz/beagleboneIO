@@ -3,13 +3,16 @@
 # add some endings to CLEANFILES
 CLEANFILES = *~
 
-bin_PROGRAMS = pwm_clock digitalWrite analogRead
+bin_PROGRAMS = pwm_clock digitalWrite analogRead pinMux
 
 digitalWrite_SOURCES = digitalWrite.c util.c beagleutil.h
 digitalWrite_LDADD = libbeagleboneio.la
 
-analogRead_Sources = analogRead.c util.c beagleutil.h
+analogRead_SOURCES = analogRead.c util.c beagleutil.h
 analogRead_LDADD = libbeagleboneio.la
+
+pinMux_SOURCES = pinMux.c util.c beagleutil.h
+pinMux_LDADD = libbeagleboneio.la
 
 pwm_clock_SOURCES = pwm_clock.c
 

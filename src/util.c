@@ -1,5 +1,5 @@
 
-
+#include "beagleutil.h"
 #include <stdio.h>
 
 unsigned compute_pin_index(const char* pinStr) {

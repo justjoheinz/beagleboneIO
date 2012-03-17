@@ -37,7 +37,7 @@ POST_UNINSTALL = :
 build_triplet = @build@
 host_triplet = @host@
 bin_PROGRAMS = pwm_clock$(EXEEXT) digitalWrite$(EXEEXT) \
-	analogRead$(EXEEXT)
+	analogRead$(EXEEXT) pinMux$(EXEEXT)
 subdir = src
 DIST_COMMON = $(include_HEADERS) $(srcdir)/Makefile.am \
 	$(srcdir)/Makefile.in depcomp
@@ -83,12 +83,15 @@ am_libbeagleboneio_la_OBJECTS = beaglebone.lo gpio.lo pair.lo \
 	beaglepins.lo
 libbeagleboneio_la_OBJECTS = $(am_libbeagleboneio_la_OBJECTS)
 PROGRAMS = $(bin_PROGRAMS)
-analogRead_SOURCES = analogRead.c
-analogRead_OBJECTS = analogRead.$(OBJEXT)
+am_analogRead_OBJECTS = analogRead.$(OBJEXT) util.$(OBJEXT)
+analogRead_OBJECTS = $(am_analogRead_OBJECTS)
 analogRead_DEPENDENCIES = libbeagleboneio.la
 am_digitalWrite_OBJECTS = digitalWrite.$(OBJEXT) util.$(OBJEXT)
 digitalWrite_OBJECTS = $(am_digitalWrite_OBJECTS)
 digitalWrite_DEPENDENCIES = libbeagleboneio.la
+am_pinMux_OBJECTS = pinMux.$(OBJEXT) util.$(OBJEXT)
+pinMux_OBJECTS = $(am_pinMux_OBJECTS)
+pinMux_DEPENDENCIES = libbeagleboneio.la
 am_pwm_clock_OBJECTS = pwm_clock.$(OBJEXT)
 pwm_clock_OBJECTS = $(am_pwm_clock_OBJECTS)
 pwm_clock_LDADD = $(LDADD)
@@ -105,10 +108,10 @@ CCLD = $(CC)
 LINK = $(LIBTOOL) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) \
 	--mode=link $(CCLD) $(AM_CFLAGS) $(CFLAGS) $(AM_LDFLAGS) \
 	$(LDFLAGS) -o $@
-SOURCES = $(libbeagleboneio_la_SOURCES) analogRead.c \
-	$(digitalWrite_SOURCES) $(pwm_clock_SOURCES)
-DIST_SOURCES = $(libbeagleboneio_la_SOURCES) analogRead.c \
-	$(digitalWrite_SOURCES) $(pwm_clock_SOURCES)
+SOURCES = $(libbeagleboneio_la_SOURCES) $(analogRead_SOURCES) \
+	$(digitalWrite_SOURCES) $(pinMux_SOURCES) $(pwm_clock_SOURCES)
+DIST_SOURCES = $(libbeagleboneio_la_SOURCES) $(analogRead_SOURCES) \
+	$(digitalWrite_SOURCES) $(pinMux_SOURCES) $(pwm_clock_SOURCES)
 HEADERS = $(include_HEADERS)
 ETAGS = etags
 CTAGS = ctags
@@ -231,8 +234,10 @@ top_srcdir = @top_srcdir@
 CLEANFILES = *~
 digitalWrite_SOURCES = digitalWrite.c util.c beagleutil.h
 digitalWrite_LDADD = libbeagleboneio.la
-analogRead_Sources = analogRead.c util.c beagleutil.h
+analogRead_SOURCES = analogRead.c util.c beagleutil.h
 analogRead_LDADD = libbeagleboneio.la
+pinMux_SOURCES = pinMux.c util.c beagleutil.h
+pinMux_LDADD = libbeagleboneio.la
 pwm_clock_SOURCES = pwm_clock.c
 lib_LTLIBRARIES = libbeagleboneio.la
 libbeagleboneio_la_SOURCES = beaglebone.c gpio.c pair.c  beaglepins.c
@@ -353,6 +358,9 @@ analogRead$(EXEEXT): $(analogRead_OBJECTS) $(analogRead_DEPENDENCIES) $(EXTRA_an
 digitalWrite$(EXEEXT): $(digitalWrite_OBJECTS) $(digitalWrite_DEPENDENCIES) $(EXTRA_digitalWrite_DEPENDENCIES) 
 	@rm -f digitalWrite$(EXEEXT)
 	$(LINK) $(digitalWrite_OBJECTS) $(digitalWrite_LDADD) $(LIBS)
+pinMux$(EXEEXT): $(pinMux_OBJECTS) $(pinMux_DEPENDENCIES) $(EXTRA_pinMux_DEPENDENCIES) 
+	@rm -f pinMux$(EXEEXT)
+	$(LINK) $(pinMux_OBJECTS) $(pinMux_LDADD) $(LIBS)
 pwm_clock$(EXEEXT): $(pwm_clock_OBJECTS) $(pwm_clock_DEPENDENCIES) $(EXTRA_pwm_clock_DEPENDENCIES) 
 	@rm -f pwm_clock$(EXEEXT)
 	$(LINK) $(pwm_clock_OBJECTS) $(pwm_clock_LDADD) $(LIBS)
@@ -369,6 +377,7 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/digitalWrite.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/gpio.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/pair.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/pinMux.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/pwm_clock.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/util.Po@am__quote@
 
