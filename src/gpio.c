@@ -7,6 +7,14 @@
 #include <sys/stat.h>
 #include <fcntl.h>
 
+static const char *gpioPath[] = {
+  "/sys/class/gpio/export", // 0
+  "/sys/class/gpio/unexport", // 1
+  "/sys/class/gpio/gpio%u/direction", // 2
+  "/sys/class/gpio/gpio%u/value", // 3
+  "/sys/class/gpio/gpio%u/edge", // 4
+  "/sys/class/gpio/gpio%u/active_low", // 5
+};
 
 void gpio_inspect(const PIN *pin) {
   int i = 0;
@@ -38,7 +46,7 @@ void gpio_mux(const PIN *pin, unsigned value) {
 void gpio_export(unsigned gpio) {
   FILE *pin;
 
-  if ( (pin  = fopen("/sys/class/gpio/export","w")) != NULL) {
+  if ( (pin  = fopen(gpioPath[0],"w")) != NULL) {
     fprintf(pin, "%u", gpio);
     fclose(pin);
     return;
@@ -49,7 +57,7 @@ void gpio_export(unsigned gpio) {
 
 void gpio_unexport(unsigned gpio) {
   FILE *pin;
-  if ( (pin  = fopen("/sys/class/gpio/unexport","w")) != NULL) {
+  if ( (pin  = fopen(gpioPath[1],"w")) != NULL) {
     fprintf(pin, "%u", gpio);
     fclose(pin);
     return;
@@ -62,7 +70,7 @@ void gpio_set_direction(unsigned gpio, unsigned direction) {
   FILE *pin;
   char buf[128];
 
-  snprintf(buf, sizeof(buf), "/sys/class/gpio/gpio%u/direction", gpio);
+  snprintf(buf, sizeof(buf), gpioPath[2], gpio);
   if ((pin = fopen(buf, "w")) != NULL) {
     switch (direction) {
     case INPUT: fprintf(pin, "in");
@@ -100,7 +108,7 @@ void gpio_read_value(unsigned gpio, unsigned *value) {
   FILE *pin;
   char buf[128];
 
-  snprintf(buf, sizeof(buf), "/sys/class/gpio/gpio%u/value", gpio);
+  snprintf(buf, sizeof(buf),gpioPath[3], gpio);
   if ((pin = fopen(buf,"r")) != NULL) {
     fscanf(pin, "%u", value);
     fclose(pin);
@@ -113,7 +121,7 @@ void gpio_read_value(unsigned gpio, unsigned *value) {
 void gpio_set_edge(unsigned gpio, const char* edge) {
   FILE *pin;
   char buf[128];
-  snprintf(buf, sizeof(buf), "/sys/class/gpio/gpio%u/edge", gpio);
+  snprintf(buf, sizeof(buf), gpioPath[4], gpio);
   if ((pin = fopen(buf,"w")) != NULL) {
     fprintf(pin, "%s", edge);
     fclose(pin);
@@ -128,7 +136,7 @@ void gpio_set_active_low(unsigned gpio, unsigned value) {
   char buf[128];
 
   assert(value == HIGH || value == LOW);
-  snprintf(buf, sizeof(buf), "/sys/class/gpio/gpio%u/active_low", gpio);
+  snprintf(buf, sizeof(buf), gpioPath[5], gpio);
   if ((pin = fopen(buf,"w")) != NULL) {
     fprintf(pin, "%u", value);
     fclose(pin);
@@ -143,7 +151,7 @@ int gpio_get_fd(unsigned gpio, int flag) {
   int fd;
   char buf[128];
 
-  snprintf(buf, sizeof(buf),"/sys/class/gpio/gpio%u/value", gpio);
+  snprintf(buf, sizeof(buf),gpioPath[3], gpio);
   fd = open(buf, flag );
   assert(fd != -1);
   return fd;
