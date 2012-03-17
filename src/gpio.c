@@ -80,12 +80,17 @@ void gpio_set_direction(unsigned gpio, unsigned direction) {
 }
 
 void gpio_write_value(unsigned gpio, unsigned value) {
-  FILE *pin;
+  int fd;
   char buf[128];
   snprintf(buf, sizeof(buf), "/sys/class/gpio/gpio%u/value", gpio);
-  if ((pin = fopen(buf,"w")) != NULL) {
-    fprintf(pin, "%u", value);
-    fclose(pin);
+  if ((fd = open(buf,O_WRONLY)) != -1) {
+    if (value) {
+      write(fd, "1", 2);
+    }
+    else {
+      write(fd, "0", 2);
+    }
+    close(fd);
     return;
   }
   perror("failed to set value for pin");
