@@ -7,13 +7,13 @@
 #include <sys/stat.h>
 #include <fcntl.h>
 
-static const char *gpioPath[] = {
-  "/sys/class/gpio/export", // 0
-  "/sys/class/gpio/unexport", // 1
-  "/sys/class/gpio/gpio%u/direction", // 2
-  "/sys/class/gpio/gpio%u/value", // 3
-  "/sys/class/gpio/gpio%u/edge", // 4
-  "/sys/class/gpio/gpio%u/active_low", // 5
+static const char *gpioPath[] = {       // index
+  "/sys/class/gpio/export",             // 0
+  "/sys/class/gpio/unexport",           // 1
+  "/sys/class/gpio/gpio%u/direction",   // 2
+  "/sys/class/gpio/gpio%u/value",       // 3
+  "/sys/class/gpio/gpio%u/edge",        // 4
+  "/sys/class/gpio/gpio%u/active_low",  // 5
 };
 
 void gpio_inspect(const PIN *pin) {
