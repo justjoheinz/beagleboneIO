@@ -5,6 +5,16 @@
 
 #include "beaglegpio.h"
 
+/** Least significant byte first
+ *
+ */
+#define LSBFIRST 1
+
+/** Most significant byte first
+ *
+ */
+#define MSBFIRST 0
+
 /** set a GPIO pin mode.
  *
  * set a GPIO pin into a particular mode.
@@ -36,6 +46,17 @@ extern unsigned digitalRead(const PIN);
  * @return the read value
  */
 extern unsigned analogRead(const unsigned pin);
+
+/** push the value serially to the dataPin.
+ * Writes the designated byte in value bitwise to the dataPin, using clockPin 
+ * as clock.
+ * The implementation is an exact copy of the algorithm found in bonescript.
+ * @param dataPin the datapin
+ * @param clockPin the clockpin
+ * @param bitOrder one of LSBFIRST or MSBFIRST
+ * @param value the value to write
+ */
+extern void shiftOut(const PIN dataPin, const PIN clockPin, const unsigned bitOrder, const unsigned value);
 
 typedef void (*beaglefunc)(void);
 

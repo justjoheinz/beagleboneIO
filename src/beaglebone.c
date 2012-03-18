@@ -60,6 +60,23 @@ unsigned analogRead(const unsigned pin) {
   assert(0);
 }
 
+void shiftOut(const PIN dataPin, const PIN clockPin, unsigned bitOrder, unsigned value) {
+  unsigned i;
+  unsigned bit;
+
+  for (i = 0; i < 8 ; i++) {
+    if (bitOrder == LSBFIRST) {
+      bit = value & (1 << i);
+    }
+    else {
+      bit = value & (1 << (7-i));
+    }
+    digitalWrite(dataPin, bit);
+    digitalWrite(clockPin, HIGH);
+    digitalWrite(clockPin, LOW); 
+  }
+}
+
 void run(beaglefunc setup, beaglefunc loop) {
   (*setup)();
   for(;;) {
