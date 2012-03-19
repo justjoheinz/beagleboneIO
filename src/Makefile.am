@@ -17,5 +17,5 @@ pinMux_LDADD = libbeagleboneio.la
 pwm_clock_SOURCES = pwm_clock.c
 
 lib_LTLIBRARIES = libbeagleboneio.la
-libbeagleboneio_la_SOURCES = beaglebone.c gpio.c pair.c  beaglepins.c
-include_HEADERS = beaglebone.h beaglepins.h beaglegpio.h beaglepair.h
+libbeagleboneio_la_SOURCES = beaglebone.c gpio.c pair.c  beaglepins.c beagledelay.c
+include_HEADERS = beaglebone.h beaglepins.h beaglegpio.h beaglepair.h beagledelay.h
