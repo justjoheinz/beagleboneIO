@@ -7,22 +7,22 @@
 #include "beaglepins.h"
 
 /** a HIGH value for a digital pin. 
- * @ingroup pin_values
+ * 
  */
 #define HIGH 1
 
 /** a LOW value for a digital pin. 
- * @ingroup pin_values
+ * 
  */
 #define LOW 0
 
 /** OUTPUT mode for a pin. 
- * @ingoup pin_values
+ * 
  */
 #define OUTPUT 1
 
 /** INPUT mode for a pin. 
- * @ingroup pin_values
+ * 
  */
 #define INPUT 0
 
