@@ -4,6 +4,7 @@
 #define _BEAGLEBONE_H
 
 #include "beaglegpio.h"
+#include "beagledelay.h"
 
 /** Least significant byte first
  *
@@ -58,8 +59,12 @@ extern unsigned analogRead(const unsigned pin);
  */
 extern void shiftOut(const PIN dataPin, const PIN clockPin, const unsigned bitOrder, const unsigned value);
 
-typedef void (*beaglefunc)(void);
-
-
-extern void run(beaglefunc setup, beaglefunc loop);
+/**
+ * Run a programm.
+ * Executes the setup function once and loops over the loop function. The loop
+ * will be executed as long as the function loop returns a non 0 value.
+ * @param setup a pointer to a function returning void with no parameters
+ * @param loop a pointer to a function returning an int. 
+ */
+extern void run(void (*setup)(void), int (*loop)(void));
 #endif

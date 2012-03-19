@@ -77,9 +77,7 @@ void shiftOut(const PIN dataPin, const PIN clockPin, unsigned bitOrder, unsigned
   }
 }
 
-void run(beaglefunc setup, beaglefunc loop) {
+void run(void (*setup)(void), int  (*loop)(void)) {
   (*setup)();
-  for(;;) {
-    (*loop)();
-  }
+  while (((*loop)()) != 0) {}
 }
