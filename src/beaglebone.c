@@ -12,10 +12,12 @@ void pinMode(const PIN pin, unsigned int value) {
   gpio = atoi(pair->value);
 
   if (value == INPUT) {
-    gpio_mux(&pin, 0x27);
+    // mux mode 0x27
+    gpio_mux(&pin,  (_MUX_0 | _MUX_1 | _MUX_2 | _MUX_RECEIVER_ENABLE));
   }
   else {
-    gpio_mux(&pin, 0x7);
+    // mux mode 0x7
+    gpio_mux(&pin, (_MUX_0 | _MUX_1 | _MUX_2));
   }
 
   gpio_export(gpio);
