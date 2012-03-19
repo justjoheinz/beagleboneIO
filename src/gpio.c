@@ -121,6 +121,7 @@ void gpio_read_value(unsigned gpio, unsigned *value) {
 void gpio_set_edge(unsigned gpio, const char* edge) {
   FILE *pin;
   char buf[128];
+
   snprintf(buf, sizeof(buf), gpioPath[4], gpio);
   if ((pin = fopen(buf,"w")) != NULL) {
     fprintf(pin, "%s", edge);
@@ -151,6 +152,7 @@ int gpio_get_fd(unsigned gpio, int flag) {
   int fd;
   char buf[128];
 
+  // gpioPath[3] = "/sys/class/gpio/gpio%u/value"
   snprintf(buf, sizeof(buf),gpioPath[3], gpio);
   fd = open(buf, flag );
   assert(fd != -1);
