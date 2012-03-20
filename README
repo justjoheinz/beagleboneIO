@@ -1,6 +1,6 @@
 == Beaglebone I/O ==
 
-A small library to support working with input and outpins on the beaglebone (http://www.beagleboard.org/bone).
+A small library to support working with input and output pins on the beaglebone (http://www.beagleboard.org/bone).
 It comes together slowly and is largely not tested yet.
 It is an experimatel project for
    * understanding the beaglebone hardware
@@ -76,14 +76,13 @@ Hack on!
 == TODO ==
 
 Stuff to do urgently:
-      * add PWM support
+      * add PWM support (partly done, see pwm_clock)
       * try it out
       * reorganize the project structure
       * I2C support
       * testing and bug reporting
       * functions inspired by http://arduino.cc/en/Reference/HomePage
       * a delay function other than sleep
-      * support for Serial communication using /dev/ttyOx / /dev/cuXXX?
-      * provide insight
+      * support for Serial communication using /dev/ttyOx / /dev/cuXXX? (started)
       
 
