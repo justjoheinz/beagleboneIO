@@ -1,4 +1,5 @@
-/** @file beaglebone.h
+/** @file beaglebone
+ *  @brief basic procedures the beaglebone/io library
  */
 #ifndef _BEAGLEBONE_H
 #define _BEAGLEBONE_H
