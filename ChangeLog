@@ -1,3 +1,7 @@
+2012-03-22  Markus Klink  <markusklink@joheinz.local>
+
+	* started work on uart and pwm support (incomplete)
+
 2012-03-16  Markus Klink  <markusklink@joheinz.oosedmz.local>
 
 	* reconfigured autoconf to use dedicated config directory
