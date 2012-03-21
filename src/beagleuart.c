@@ -5,6 +5,7 @@
 #include <stdlib.h>
 #include <fcntl.h>
 #include <stdio.h>
+#include <unistd.h>
 
 // some of the code inspired by http://todbot.com/
 
@@ -21,8 +22,8 @@ UART uart[6] = {
 int uart_begin(UART uart, int baud) {
 
   // config pins 
-  gpio_mux(&uart.rxd, &uart.rxd_mux);
-  gpio_mux(&uart.txd, &uart.txd_mux);    
+  gpio_mux(uart.rxd, uart.rxd_mux);
+  gpio_mux(uart.txd, uart.txd_mux);    
 
   uart.fd = open(uart.device, O_RDWR | O_NOCTTY | O_NDELAY);
   if (uart.fd == -1)  {
@@ -48,6 +49,8 @@ int uart_begin(UART uart, int baud) {
   }
   cfsetispeed(&uart.toptions, brate);
   cfsetospeed(&uart.toptions, brate);
+
+  return -1; //TOO
 }
 
 int uart_close(UART uart) {
