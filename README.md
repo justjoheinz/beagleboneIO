@@ -1,4 +1,5 @@
-== Beaglebone I/O ==
+Beaglebone I/O
+==============
 
 A small library to support working with input and output pins on the beaglebone (http://www.beagleboard.org/bone).
 It comes together slowly and is largely not tested yet.
@@ -11,7 +12,8 @@ In the end it shall be fairly highlevel and mimic the behaviour of the Arduino L
 
 The API is far from stable!
 
-== INSTALLATION ==
+INSTALLATION
+------------
 
 Clone the repository (or if you want to contribute fork the repository first and clone your own):
 
@@ -63,7 +65,8 @@ analogRead --pin <pin>
 BONE:~/projects/beagleboneIO# analogRead --pin 4
 4080
 
-== SAMPLE PROJECT ==
+SAMPLE PROJECT
+--------------
 
 A super simple use of the library:
 https://gist.github.com/2059197
