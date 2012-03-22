@@ -15,7 +15,9 @@ UART uart[6] = {
   // device | rxd | txd | rxd_mux | txd_mux | fd | toptions
   { "/dev/ttyO0", NULL, NULL, 0, 0, -1},
   { "/dev/ttyO1", &pins[P9_26], &pins[P9_24], 0, 0, -1},
-  { "/dev/ttyO2", &pins[P9_22], &pins[P9_21], 0, 0, -1},
+  { "/dev/ttyO2", &pins[P9_22], &pins[P9_21], 
+    (_MUX_RECEIVER_ENABLE | _MUX_PUPD_DISABLE | 0x1), 
+    (0x1), -1},
   { "/dev/ttyO3", NULL, NULL, 0, 0, -1},
   { "/dev/ttyO4", &pins[P9_11], &pins[P9_13], 
     (_MUX_RECEIVER_ENABLE | _MUX_PUPD_DISABLE | 0x6), 
