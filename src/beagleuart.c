@@ -29,7 +29,7 @@ int uart_begin(UART* uart, int baud) {
   gpio_mux(uart->rxd, uart->rxd_mux);
   gpio_mux(uart->txd, uart->txd_mux);    
 
-  uart.fd = open(uart->device, O_RDWR | O_NOCTTY | O_NDELAY);
+  uart->fd = open(uart->device, O_RDWR | O_NOCTTY | O_NDELAY);
   if (uart->fd == -1)  {
     perror("uart_begin: unable to open tty_device ");
     return -1;
