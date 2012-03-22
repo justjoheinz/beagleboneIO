@@ -43,6 +43,7 @@
 #define _MUX_3 _MUX(3)
 #define _MUX_4 _MUX(4)
 #define _MUX_5 _MUX(5)
+#define _MUX_6 _MUX(6)
 
 #define _MUX_PUPD_DISABLE _MUX_3
 #define _MUX_PUPD_PULLUP _MUX_4
