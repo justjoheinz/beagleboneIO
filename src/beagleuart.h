@@ -23,7 +23,7 @@ extern UART uart[6];
 /**
  *
  */
-extern int uart_begin(UART uart, int baud);
+extern int uart_begin(UART* uart, int baud);
   
 /**
  *

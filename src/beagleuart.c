@@ -23,19 +23,19 @@ UART uart[6] = {
   { "/dev/ttyO6", &pins[P9_38], &pins[P9_37], 0, 0, -1}};
 
 
-int uart_begin(UART uart, int baud) {
+int uart_begin(UART* uart, int baud) {
 
   // config pins 
-  gpio_mux(uart.rxd, uart.rxd_mux);
-  gpio_mux(uart.txd, uart.txd_mux);    
+  gpio_mux(uart->rxd, uart->rxd_mux);
+  gpio_mux(uart->txd, uart->txd_mux);    
 
-  uart.fd = open(uart.device, O_RDWR | O_NOCTTY | O_NDELAY);
-  if (uart.fd == -1)  {
+  uart.fd = open(uart->device, O_RDWR | O_NOCTTY | O_NDELAY);
+  if (uart->fd == -1)  {
     perror("uart_begin: unable to open tty_device ");
     return -1;
   }
     
-  if (tcgetattr(uart.fd, &uart.toptions) < 0) {
+  if (tcgetattr(uart->fd, &uart->toptions) < 0) {
     perror("uart_begin: couldn't retrieve term attributes");
     return -1;
   }
@@ -51,10 +51,33 @@ int uart_begin(UART uart, int baud) {
   case 57600:  brate=B57600;  break;
   case 115200: brate=B115200; break;
   }
-  cfsetispeed(&uart.toptions, brate);
-  cfsetospeed(&uart.toptions, brate);
+  cfsetispeed(&uart->toptions, brate);
+  cfsetospeed(&uart->toptions, brate);
 
-  return -1; //TOO
+  // 8N1
+  uart->toptions.c_cflag &= ~PARENB;
+  uart->toptions.c_cflag &= ~CSTOPB;
+  uart->toptions.c_cflag &= ~CSIZE;
+  uart->toptions.c_cflag |= CS8;
+  // no flow control
+  uart->toptions.c_cflag &= ~CRTSCTS;
+
+  uart->toptions.c_cflag |= CREAD | CLOCAL;  // turn on READ & ignore ctrl lines
+  uart->toptions.c_iflag &= ~(IXON | IXOFF | IXANY); // turn off s/w flow ctrl
+
+  uart->toptions.c_lflag &= ~(ICANON | ECHO | ECHOE | ISIG); // make raw
+  uart->toptions.c_oflag &= ~OPOST; // make raw
+
+  // see: http://unixwiz.net/techtips/termios-vmin-vtime.html
+  uart->toptions.c_cc[VMIN]  = 0;
+  uart->toptions.c_cc[VTIME] = 20;
+    
+  if( tcsetattr(uart->fd, TCSANOW, &uart->toptions) < 0) {
+    perror("init_serialport: Couldn't set term attributes");
+    return -1;
+  }
+
+  return uart->fd; 
 }
 
 int uart_write(UART uart, const char* str)
