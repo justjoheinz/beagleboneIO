@@ -76,16 +76,18 @@ Please CONTRIBUTE by submitting feature request and bugs and code.
 Hack on!
 
 
-== TODO ==
+TODO
+----
 
 Stuff to do urgently:
-      * add PWM support (partly done, see pwm_clock)
-      * try it out
-      * reorganize the project structure
-      * I2C support
-      * testing and bug reporting
-      * functions inspired by http://arduino.cc/en/Reference/HomePage
-      * a delay function other than sleep
-      * support for Serial communication using /dev/ttyOx / /dev/cuXXX? (started)
+
+* add PWM support (partly done, see pwm_clock)
+* try it out
+* reorganize the project structure
+* I2C support
+* testing and bug reporting
+* functions inspired by http://arduino.cc/en/Reference/HomePage
+* a delay function other than sleep
+* support for Serial communication using /dev/ttyOx / /dev/cuXXX? (started)
       
 
