@@ -6,6 +6,8 @@
 #include <fcntl.h>
 #include <stdio.h>
 #include <unistd.h>
+#include <assert.h>
+#include <string.h>
 
 // some of the code inspired by http://todbot.com/
 
@@ -15,7 +17,9 @@ UART uart[6] = {
   { "/dev/ttyO1", &pins[P9_26], &pins[P9_24], 0, 0, -1},
   { "/dev/ttyO2", &pins[P9_22], &pins[P9_21], 0, 0, -1},
   { "/dev/ttyO3", NULL, NULL, 0, 0, -1},
-  { "/dev/ttyO4", &pins[P9_11], &pins[P9_14], 0, 0, -1},
+  { "/dev/ttyO4", &pins[P9_11], &pins[P9_13], 
+    (_MUX_RECEIVER_ENABLE | _MUX_PUPD_DISABLE | 0x6), 
+    (0x6), -1},
   { "/dev/ttyO6", &pins[P9_38], &pins[P9_37], 0, 0, -1}};
 
 
@@ -51,6 +55,18 @@ int uart_begin(UART uart, int baud) {
   cfsetospeed(&uart.toptions, brate);
 
   return -1; //TOO
+}
+
+int uart_write(UART uart, const char* str)
+{
+  int len = strlen(str);
+  if (uart.fd == -1) {
+    assert(0);
+  }
+  int n = write(uart.fd, str, len);
+  if( n!=len ) 
+    return -1;
+  return 0;
 }
 
 int uart_close(UART uart) {
