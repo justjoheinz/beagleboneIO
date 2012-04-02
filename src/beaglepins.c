@@ -1,4 +1,5 @@
 /** @file beaglepins.c
+ * @brief Definition of pin layout
  *
  * AUTOMATICALLY GENERATED - PLEASE DO NOT MODIFY
  */
