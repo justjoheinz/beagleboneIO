@@ -1,4 +1,5 @@
 /** @file beaglepair.h
+ * @brief Defintion of the pair structure and methods.
  */
 #ifndef _PAIR_H
 #define _PAIR_H

@@ -1,4 +1,4 @@
-/** @file beaglepwm
+/** @file beaglepwm.h
  *  @brief support for PWM operations
  */
 #ifndef _BEAGLEPWM_H

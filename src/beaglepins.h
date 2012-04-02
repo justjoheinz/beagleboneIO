@@ -1,5 +1,5 @@
 /** @file beaglepins.h
-  * Definition of the beaglebone pins.
+  * @brief Definition of the beaglebone pins.
   *
   * This file contains the defintions of beaglebone pins.
   * The pins are stored in an array structure pins which can be passed
