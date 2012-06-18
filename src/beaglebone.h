@@ -1,3 +1,6 @@
+
+#define FEATURE_GPIO_MEM 1
+
 /** @file beaglebone
  *  @brief basic procedures the beaglebone/io library
  */
