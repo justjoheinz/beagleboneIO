@@ -1,7 +1,7 @@
 /** @file beaglepins.h
   * @brief Definition of the beaglebone pins.
   *
-  * This file contains the defintions of beaglebone pins.
+  * This file contains the definitions of beaglebone pins.
   * The pins are stored in an array structure pins which can be passed
   * to function within the beagleboneio library.
   * Each Pin is addressed via its defined macro name, e.g. P8_3.
@@ -21,9 +21,9 @@
 #define P8_1 0
  
 /** @brief P8_2
-  * DGND
-  * 
-  */
+ * DGND
+ * 
+ */
 #define P8_2 1
  
 /** @brief P8_3
