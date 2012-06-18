@@ -1,8 +1,13 @@
 #include "beaglebone.h"
+#include "beaglegpiomem.h"
 
 #include <stdio.h>
 #include <stdlib.h>
 #include <assert.h>
+
+#ifdef FEATURE_GPIO_MEM
+  #include "beaglegpiomem.c"
+#endif
 
 void pinMode(const PIN pin, unsigned int value) {
   unsigned gpio;
@@ -25,6 +30,12 @@ void pinMode(const PIN pin, unsigned int value) {
 
 }
 
+
+#ifndef FEATURE_GPIO_MEM
+/*
+ * std out version 
+ */
+
 void digitalWrite(const PIN pin, unsigned int value) {
   unsigned gpio;
   const Pair* pair;
@@ -34,6 +45,7 @@ void digitalWrite(const PIN pin, unsigned int value) {
   gpio_write_value(gpio, value);
 
 } 
+#endif // FEATURE_GPIO_MEM
 
 unsigned digitalRead(const PIN pin) {
   unsigned gpio;
@@ -80,6 +92,11 @@ void shiftOut(const PIN dataPin, const PIN clockPin, unsigned bitOrder, unsigned
 }
 
 void run(void (*setup)(void), int  (*loop)(void)) {
+
+#ifdef FEATURE_GPIO_MEM
+  setup_gpio_mem_map();
+#endif
+
   (*setup)();
   while (((*loop)()) != 0) {}
 }
