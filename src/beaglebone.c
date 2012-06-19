@@ -5,10 +5,6 @@
 #include <stdlib.h>
 #include <assert.h>
 
-#ifdef FEATURE_GPIO_MEM
-  #include "beaglegpiomem.c"
-#endif
-
 void pinMode(const PIN pin, unsigned int value) {
   unsigned gpio;
   const Pair* pair;
