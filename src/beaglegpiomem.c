@@ -10,6 +10,7 @@
 #include <sys/mman.h>
 
 #include "beaglepair.h"
+#include "beaglegpiomem.h"
 
 unsigned long bankAddr[] = {
   GPIO0,

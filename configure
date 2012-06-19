@@ -754,6 +754,7 @@ enable_fast_install
 with_gnu_ld
 with_sysroot
 enable_libtool_lock
+enable_gpiomem
 '
       ac_precious_vars='build_alias
 host_alias
@@ -1391,6 +1392,7 @@ Optional Features:
   --enable-fast-install[=PKGS]
                           optimize for fast installation [default=yes]
   --disable-libtool-lock  avoid locking (might break parallel builds)
+  --enable-gpiomem        enable memory mapping for GPIO pins
 
 Optional Packages:
   --with-PACKAGE[=ARG]    use PACKAGE [ARG=yes]
@@ -11899,6 +11901,17 @@ ac_config_files="$ac_config_files Makefile src/Makefile"
 
 
 
+#enable gpio_mem feature
+# Check whether --enable-gpiomem was given.
+if test "${enable_gpiomem+set}" = set; then :
+  enableval=$enable_gpiomem;
+fi
+
+
+if test "x$enable_gpiomem" = "xyes"; then :
+  $as_echo "#define FEATURE_GPIO_MEM 1" >>confdefs.h
+
+fi
 cat >confcache <<\_ACEOF
 # This file is a shell script that caches the results of configure
 # tests run on this system so they can be shared between configure
