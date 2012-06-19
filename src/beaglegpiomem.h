@@ -4,6 +4,8 @@
 
 #ifndef _GPIO_MEM_H
 
+#include "beaglegpio.h"
+
 #define MMAP_OFFSET 0x44c00000
 #define MMAP_SIZE   (0x48ffffff-MMAP_OFFSET)
 
