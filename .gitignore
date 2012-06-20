@@ -17,3 +17,7 @@ autom4te.cache/
 libtool
 m4/
 .cproject
+src/html
+src/latex
+src/man
+src/.deps
