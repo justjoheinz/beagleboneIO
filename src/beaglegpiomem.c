@@ -52,8 +52,7 @@ unsigned long getReg(unsigned long address) {
   return result;
 }
 
-// GIPIO MEM MAPPED IO VERSION
-void digitalWrite(PIN pin, unsigned int value) {
+void pinToMem(PIN pin, unsigned long *ret_addr, unsigned long *ret_bitMask) {
     assert(gpio != MAP_FAILED);
     const Pair* pair = get_pair_with_key(pin.def, pin.no, "gpio");
     unsigned gpioNo = atoi(pair->value);
@@ -65,14 +64,31 @@ void digitalWrite(PIN pin, unsigned int value) {
     */
     assert(bank >= 0);
     assert(bank < 4);
-    unsigned long bitMask = 1 << bit;
-    unsigned long outAddress = bankAddr[bank] + GPIO_DATAOUT;
-    unsigned long reg = getReg(outAddress);
+    *ret_bitMask = 1 << bit;
+    *ret_addr = bankAddr[bank];
+}
+
+void digitalWrite(PIN pin, unsigned int value) {
+    unsigned long addr;
+    unsigned long bitMask;
+
+    pinToMem(pin, &addr, &bitMask);
+      
+    unsigned long reg = getReg(addr + GPIO_DATAOUT);
     if (value)
-      reg = setBit( reg, bitMask);
+      reg = setBit(reg, bitMask);
     else 
-      reg = clearBit( reg, bitMask);
-    setReg(outAddress,reg);
+      reg = clearBit(reg, bitMask);
+    setReg(addr + GPIO_DATAOUT,reg);
+}
+
+unsigned digitalRead(PIN pin) {
+    unsigned long addr;
+    unsigned long bitMask;
+
+    pinToMem(pin, &addr, &bitMask);
+    unsigned long reg = getReg(addr + GPIO_DATAIN);
+    return (reg & bitMask) ? 1 : 0;
 }
 
 int setup_gpio_mem_map() {

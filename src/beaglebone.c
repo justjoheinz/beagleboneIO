@@ -41,7 +41,6 @@ void digitalWrite(const PIN pin, unsigned int value) {
   gpio_write_value(gpio, value);
 
 } 
-#endif // FEATURE_GPIO_MEM
 
 unsigned digitalRead(const PIN pin) {
   unsigned gpio;
@@ -55,6 +54,8 @@ unsigned digitalRead(const PIN pin) {
 
   return value;
 }
+
+#endif // FEATURE_GPIO_MEM
 
 unsigned analogRead(const unsigned pin) {
   FILE *f;
@@ -96,3 +97,4 @@ void run(void (*setup)(void), int  (*loop)(void)) {
   (*setup)();
   while (((*loop)()) != 0) {}
 }
+
