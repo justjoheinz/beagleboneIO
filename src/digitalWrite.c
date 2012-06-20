@@ -39,6 +39,9 @@ void doDigitalWrite(unsigned pinIndex, unsigned value) {
 
 
 int main(int argc, char **argv) {
+#ifdef FEATURE_GPIO_MEM
+  setup_gpio_mem_map();
+#endif
   int opt;
   while ((opt = getopt_long(argc, argv, optString, longOpts, NULL)) != -1) {
     switch(opt) {
