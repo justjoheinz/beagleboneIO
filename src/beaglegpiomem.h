@@ -20,6 +20,7 @@
 #define GPIO_CLEARDATAOUT 0x190
 #define GPIO_SETDATAOUT   0x194
 
+extern void digitalWrite(const PIN, unsigned int);
 extern void digitalWrite_mem(PIN, unsigned int);
 extern int setup_gpio_mem_map();
 
