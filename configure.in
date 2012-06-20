@@ -4,6 +4,9 @@ AC_PREREQ(2.59)
 
 AC_INIT([beagleboneio], [0.1], [justjoheinz@gmail.com])
 
+m4_pattern_allow([AM_PROG_AR])
+AM_PROG_AR
+
 # create seperate directory for autoconf stuff
 AC_CONFIG_AUX_DIR([config])
 
@@ -23,4 +26,10 @@ AC_CONFIG_FILES([
 AC_CONFIG_MACRO_DIR([m4])
 LT_INIT()
 
+#enable gpio_mem feature
+AC_ARG_ENABLE([gpiomem],
+	AS_HELP_STRING([--enable-gpiomem], [enable memory mapping for GPIO pins]))
+
+AS_IF([test "x$enable_gpiomem" = "xyes"], 
+	[AC_DEFINE(FEATURE_GPIO_MEM)], [])
 AC_OUTPUT

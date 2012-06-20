@@ -1,4 +1,5 @@
 /** @file beaglegpio.h
+ * @brief Definition of GPIO structures and methods
  */
 #ifndef _GPIO_H
 #define _GPIO_H

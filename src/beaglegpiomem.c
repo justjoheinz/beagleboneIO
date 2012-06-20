@@ -6,10 +6,12 @@
 #include <sys/types.h>
 #include <sys/stat.h>
 #include <unistd.h>
+#include <assert.h>
 #include <fcntl.h>
 #include <sys/mman.h>
 
 #include "beaglepair.h"
+#include "beaglegpiomem.h"
 
 unsigned long bankAddr[] = {
   GPIO0,
@@ -18,7 +20,7 @@ unsigned long bankAddr[] = {
   GPIO3
 };
 
-volatile ulong *gpio;
+volatile unsigned long *gpio;
 
 unsigned long setBit(unsigned long reg, unsigned long mask) {
   return reg | mask;
@@ -99,7 +101,7 @@ int setup_gpio_mem_map() {
 
     // GPIO configuration
     // if (DEBUG) printf ("Map GPIO\n");
-    gpio = (ulong*) mmap(NULL, MMAP_SIZE, PROT_READ | PROT_WRITE,
+    gpio = (unsigned long*) mmap(NULL, MMAP_SIZE, PROT_READ | PROT_WRITE,
 MAP_SHARED, gpio_fd, MMAP_OFFSET);
     if (gpio == MAP_FAILED) {
       printf ("GPIO Mapping failed\n");

@@ -44,14 +44,33 @@ int uart_begin(UART* uart, int baud) {
   speed_t brate = baud; 
 
   switch(baud) {
+#ifdef B4800
   case 4800:   brate=B4800;   break;
+#endif
+#ifdef B9600
   case 9600:   brate=B9600;   break;
-    //  case 14400:  brate=B14400;  break;
+#endif
+#ifdef B14400
+  case 14400:  brate=B14400;  break;
+#endif
+#ifdef B19200
   case 19200:  brate=B19200;  break;
-    // case 28800:  brate=B28800;  break;
+#endif
+#ifdef B28800
+  case 28800:  brate=B28800;  break;
+#endif
+#ifdef B38400
   case 38400:  brate=B38400;  break;
+#endif
+#ifdef B57600
   case 57600:  brate=B57600;  break;
+#endif
+#ifdef B115200
   case 115200: brate=B115200; break;
+#endif
+  default: fprintf(stderr, "No baudrate found"); 
+    assert(0);
+    break;
   }
   cfsetispeed(&uart->toptions, brate);
   cfsetospeed(&uart->toptions, brate);

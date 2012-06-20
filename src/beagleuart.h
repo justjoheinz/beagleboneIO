@@ -1,4 +1,4 @@
-/** @file beagleuart
+/** @file beagleuart.h
   * @brief serial communication with tty devices
   */
 #ifndef _BEAGLEUART_H
