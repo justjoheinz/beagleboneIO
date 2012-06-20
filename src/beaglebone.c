@@ -1,5 +1,8 @@
 #include "beaglebone.h"
+
+#ifdef FEATURE_GPIO_MEM
 #include "beaglegpiomem.h"
+#endif
 
 #include <stdio.h>
 #include <stdlib.h>
