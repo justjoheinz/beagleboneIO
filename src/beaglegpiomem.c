@@ -53,7 +53,7 @@ unsigned long getReg(unsigned long address) {
 }
 
 // GIPIO MEM MAPPED IO VERSION
-void digitalWrite(PIN pin, unsigned int value) {
+void digitalWrite(const PIN pin, unsigned int value) {
     assert(gpio != MAP_FAILED);
     const Pair* pair = get_pair_with_key(pin.def, pin.no, "gpio");
     unsigned gpioNo = atoi(pair->value);
