@@ -7,7 +7,10 @@
 #include "beaglegpio.h"
 #include <termios.h>
 
-
+/** Structure to hold information about existing UART configurations. 
+ * Saves information about which pins to use for RXD/TXD,
+ * and how to mux them into the proper mode.
+ */
 typedef struct {
   const char* device;
   const PIN* rxd;

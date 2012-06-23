@@ -1,7 +1,7 @@
 /** @file beaglebone
  *  @brief basic procedures the beaglebone/io library
  *  @mainpage Introduction
- *
+ *  For installation instructions, please read README.md
  */
 #ifndef _BEAGLEBONE_H
 #define _BEAGLEBONE_H
