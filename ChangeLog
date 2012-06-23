@@ -1,3 +1,9 @@
+2012-06-23  Markus Klink  <markusklink@joheinz.local>
+
+	* memmap implementation of digitalRead
+
+	* configure option: --enable-gpiomem=[yes|no]
+
 2012-03-22  Markus Klink  <markusklink@joheinz.local>
 
 	* started work on uart and pwm support (incomplete)
