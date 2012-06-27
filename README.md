@@ -30,11 +30,9 @@ cd into the beagleboneIO directory and invoke configure. Use a prefix where to i
     checking for gawk... gawk
     ...
 
-As an alternative one can use MMAP enabled GPIO pins using
+As an alternative one can use MMAP enabled GPIO pins using, which is working faster
 
     BONE:~/projects/beagleboneIO# ./configure --prefix=/opt/local -enable-gpiomem=yes
-
-(PLEASE NOTE: this feature is not working yet and yields in compile errors)
 
 Compile the sourcecode
 
