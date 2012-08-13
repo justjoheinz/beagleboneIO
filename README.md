@@ -34,8 +34,6 @@ As an alternative one can use MMAP enabled GPIO pins using
 
    BONE:~/projects/beagleboneIO# ./configure --prefix=/opt/local -enable-gpiomem=yes
 
-(PLEASE NOTE: this feature is not working yet and yields in compile errors)
-
 Compile the sourcecode
 
     BONE:~/projects/beagleboneIO# make
