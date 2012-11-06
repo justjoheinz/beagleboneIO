@@ -32,7 +32,7 @@ cd into the beagleboneIO directory and invoke configure. Use a prefix where to i
 
 As an alternative one can use MMAP enabled GPIO pins using, which is working faster
 
-    BONE:~/projects/beagleboneIO# ./configure --prefix=/opt/local -enable-gpiomem=yes
+   BONE:~/projects/beagleboneIO# ./configure --prefix=/opt/local -enable-gpiomem=yes
 
 Compile the sourcecode
 
